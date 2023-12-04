@@ -1,10 +1,13 @@
 import React from 'react';
-
+import Counter from './components/Counter';
+import Writer from './components/Writer';
 
 const App = () => {
   return (
-    <h1>Hello, world!</h1>,
-    <p>It's react templates</p>
+    <div>
+      <Counter />
+      <Writer />
+    </div>
   );
 }
 
