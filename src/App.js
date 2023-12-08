@@ -5,6 +5,7 @@ import PostForm from './components/PostForm';
 
 import PostFilter from './components/PostFilter';
 import MyModal from './components/UI/MyModal/MyModal';
+import MyButton from './components/UI/button/MyButton';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
   ])
 
   const [filter, setFilter] = useState({sort:'', query: ''})
+  const [modal, setModal] = useState(false)
 
   const sortedPosts = useMemo(() =>{
     console.log('getSortedPosts')
@@ -31,6 +33,7 @@ const App = () => {
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
+    setModal(false)
   }
 
   //post из дочернего элемента
@@ -41,7 +44,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <MyModal>
+      <MyButton onClick = {() => setModal(true)}>
+          create post
+      </MyButton>
+      <MyModal visible={modal} setVisible={setModal}>
         <PostForm create = {createPost}/>
       </MyModal>
         
