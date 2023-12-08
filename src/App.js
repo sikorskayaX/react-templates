@@ -4,6 +4,7 @@ import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 
 import PostFilter from './components/PostFilter';
+import MyModal from './components/UI/MyModal/MyModal';
 
 
 const App = () => {
@@ -40,17 +41,16 @@ const App = () => {
 
   return (
     <div className="App">
+      <MyModal>
         <PostForm create = {createPost}/>
+      </MyModal>
+        
         <hr style={{margin: '15px 0 '}}></hr>
         <PostFilter
           filter={filter}
           setFilter={setFilter}
         />
-        {sortedAndSearchedPosts.length
-          ? <PostList remove = {removePost} posts={sortedAndSearchedPosts} title="Posts about JS"/>
-          : <h1 style={{textAlign: 'center'}}>No posts</h1>
-        }
-        
+        <PostList remove = {removePost} posts={sortedAndSearchedPosts} title="Posts about JS"/>
     </div>
   );
 }
